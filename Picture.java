@@ -367,7 +367,44 @@ public class Picture
   }
 
    ////////////////////// methods ///////////////////////////////////////
-
+   //Method for Sepia by Wesley Truong
+public void Sepia()
+{
+  //initialize pixel array
+  Pixel[][] pixels = this.getPixels2D();
+  //pixel that we use to loop
+  Pixel p = null;
+  //rgb variables
+  int r = 0;
+  int g = 0;
+  int b = 0;
+  //traversing 2D array
+  for(int row = 0; row < pixels.length; row++)
+    {
+      for(int col = 0; col < pixels[0].length; col++)
+      {
+        //Create pixel array
+        p = pixels[row][col];
+        //use sepia formula for r g b
+        r = (int)(p.getRed()*0.393 + p.getGreen()*0.769 + p.getBlue()*0.189);
+        g = (int)(p.getRed()*0.349 + p.getGreen()*0.686 + p.getBlue()*0.168);
+        b = (int)(p.getRed()*0.272 + p.getGreen()*0.534 + p.getBlue()*0.131);
+        //put in the colors to the pixel; limit max rgb to 255 so it works properly
+        if (r > 255)
+          p.setRed(255);
+        else
+          p.setRed(r);
+        if (g > 255)
+          p.setGreen(255);
+        else
+          p.setGreen(g);
+        if (b > 255)
+          p.setBlue(255);
+        else
+          p.setBlue(b);
+      }
+    }
+}
    
 
 
